@@ -1,6 +1,6 @@
-# React CSR SPA
+# React Redux CSR SPA
 
-Example React SPA using the Bloomreach [React SDK](https://www.npmjs.com/package/@bloomreach/react-sdk). The app is created
+Example React Redux SPA using the Bloomreach [React SDK](https://www.npmjs.com/package/@bloomreach/react-sdk). The app is created
 using [create-react-app](https://github.com/facebook/create-react-app).
 
 ## Install and run
