@@ -22,11 +22,11 @@ import { BrxApp } from './components/BrxApp';
 export default function App(): JSX.Element {
   const { count: stateCount } = useSelector((state: RootState) => state.counter);
 
-  const [counter2, setCounter2] = useState(0);
+  const [counter1, setCounter1] = useState(0);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setCounter2(2);
+      setCounter1(1);
     }, 2000);
 
     return () => {
@@ -37,7 +37,7 @@ export default function App(): JSX.Element {
   return (
     <StrictMode>
       { stateCount }
-      {counter2}
+      {counter1}
       <BrxApp />
     </StrictMode>
   );

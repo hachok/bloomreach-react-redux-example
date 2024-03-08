@@ -26,14 +26,14 @@ import { NewsList } from './NewsList';
 
 export const BrxApp: React.FC = React.memo(() => {
   const location = useLocation();
-  const counter1 = useRef(0);
+  const counter2 = useRef(0);
 
   const configuration = buildConfiguration(`${location.pathname}${location.search}`, axios);
   const mapping = { Banner, Content, 'News List': NewsList, 'Simple Content': Content };
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      counter1.current = 1;
+      counter2.current = 2;
     }, 2000);
 
     return () => {
@@ -45,7 +45,7 @@ export const BrxApp: React.FC = React.memo(() => {
     <BrPage configuration={configuration} mapping={mapping}>
       <header>
         <nav className="navbar navbar-expand-sm navbar-dark sticky-top bg-dark" role="navigation">
-          { counter1.current }
+          { counter2.current }
           <div className="container">
             <BrPageContext.Consumer>
               {(page) => page
