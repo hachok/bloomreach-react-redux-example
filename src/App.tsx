@@ -15,11 +15,13 @@
  */
 
 import React, { StrictMode, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from './redux/store';
 import { BrxApp } from './components/BrxApp';
+import { increment } from './redux/counterSlice';
 
 export default function App(): JSX.Element {
+  const dispatch = useDispatch();
   const { count: stateCount } = useSelector((state: RootState) => state.counter);
 
   const [counter1, setCounter1] = useState(0);
@@ -34,11 +36,27 @@ export default function App(): JSX.Element {
     };
   }, []);
 
+  const handleClick = (): void => {
+    dispatch(increment());
+  };
+
   return (
     <StrictMode>
-      { stateCount }
+
+      Counter1:
+      {' '}
       {counter1}
+
+      <button type="button" onClick={handleClick}>
+        Increment counter inside Banner
+      </button>
+
+      Counter from Redux state:
+      {' '}
+      {stateCount}
+
       <BrxApp />
+
     </StrictMode>
   );
 }

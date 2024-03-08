@@ -18,11 +18,15 @@ import { BrManageContentButton, BrProps } from '@bloomreach/react-sdk';
 import { Document, ImageSet } from '@bloomreach/spa-sdk';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { sanitize } from '../utils/sanitize';
+import { RootState } from '../redux/store';
 
 export function Banner({ component, page }: BrProps): JSX.Element | null {
   const documentRef = component?.getModels().document;
   const document = !!documentRef && page?.getContent(documentRef);
+
+  const { count: stateCount } = useSelector((state: RootState) => state.counter);
 
   if (!document || !page) {
     return null;
@@ -34,6 +38,11 @@ export function Banner({ component, page }: BrProps): JSX.Element | null {
 
   return (
     <div className={`jumbotron mb-3 ${page.isPreview() ? 'has-edit-button' : ''}`}>
+
+      Counter from Redux state inside Banner component:
+      {' '}
+      { stateCount }
+
       <BrManageContentButton
         content={document}
         documentTemplateQuery="new-banner-document"

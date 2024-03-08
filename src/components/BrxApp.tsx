@@ -45,7 +45,13 @@ export const BrxApp: React.FC = React.memo(() => {
     <BrPage configuration={configuration} mapping={mapping}>
       <header>
         <nav className="navbar navbar-expand-sm navbar-dark sticky-top bg-dark" role="navigation">
-          { counter2.current }
+
+          <div className="bg-light">
+            Counter2:
+            {' '}
+            { counter2.current }
+          </div>
+
           <div className="container">
             <BrPageContext.Consumer>
               {(page) => page
