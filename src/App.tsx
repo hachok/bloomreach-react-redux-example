@@ -43,6 +43,8 @@ export default function App(): JSX.Element {
   return (
     <StrictMode>
 
+      Parent component
+
       Counter1:
       {' '}
       {counter1}

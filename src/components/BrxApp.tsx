@@ -42,44 +42,48 @@ export const BrxApp: React.FC = React.memo(() => {
   }, []);
 
   return (
-    <BrPage configuration={configuration} mapping={mapping}>
-      <header>
-        <nav className="navbar navbar-expand-sm navbar-dark sticky-top bg-dark" role="navigation">
+    <div style={{ border: '1px solid red' }}>
+      Child component
 
-          <div className="bg-light">
-            Counter2:
-            {' '}
-            { counter2.current }
-          </div>
+      <BrPage configuration={configuration} mapping={mapping}>
+        <header>
+          <nav className="navbar navbar-expand-sm navbar-dark sticky-top bg-dark" role="navigation">
 
-          <div className="container">
-            <BrPageContext.Consumer>
-              {(page) => page
-                && (
-                  <Link to={page.getUrl('/')} className="navbar-brand">
-                    {page.getTitle() || 'brXM + React = ♥️'}
-                  </Link>
-                )}
-            </BrPageContext.Consumer>
-            <div className="collapse navbar-collapse">
-              <BrComponent path="menu">
-                <Menu />
-              </BrComponent>
+            <div className="bg-light">
+              Counter2:
+              {' '}
+              { counter2.current }
+            </div>
+
+            <div className="container">
+              <BrPageContext.Consumer>
+                {(page) => page
+                      && (
+                      <Link to={page.getUrl('/')} className="navbar-brand">
+                        {page.getTitle() || 'brXM + React = ♥️'}
+                      </Link>
+                      )}
+              </BrPageContext.Consumer>
+              <div className="collapse navbar-collapse">
+                <BrComponent path="menu">
+                  <Menu />
+                </BrComponent>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <section className="container flex-fill pt-3">
+          <BrComponent path="main" />
+        </section>
+        <footer className="bg-dark text-light py-3">
+          <div className="container clearfix">
+            <div className="float-left pr-3">&copy; Bloomreach</div>
+            <div className="overflow-hidden">
+              <BrComponent path="footer" />
             </div>
           </div>
-        </nav>
-      </header>
-      <section className="container flex-fill pt-3">
-        <BrComponent path="main" />
-      </section>
-      <footer className="bg-dark text-light py-3">
-        <div className="container clearfix">
-          <div className="float-left pr-3">&copy; Bloomreach</div>
-          <div className="overflow-hidden">
-            <BrComponent path="footer" />
-          </div>
-        </div>
-      </footer>
-    </BrPage>
+        </footer>
+      </BrPage>
+    </div>
   );
 });
